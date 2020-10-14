@@ -155,6 +155,21 @@ sub _init_mojo_client {
     $t->get_ok('/')->status_is(200)->content_like(qr/choose a machine/i);
 }
 
+sub test_login_fail {
+    $t->post_ok('/login' => form => {login => "fail", password => 'bigtime'});
+    is($t->tx->res->code(),403);
+    $t->get_ok("/admin/machines")->status_is(401);
+    is($t->tx->res->dom->at("button#submit")->text,'Login') or exit;
+
+    login();
+
+    $t->post_ok('/login' => form => {login => "fail", password => 'bigtime'});
+    is($t->tx->res->code(),403);
+
+    $t->get_ok("/admin/machines")->status_is(401);
+    is($t->tx->res->dom->at("button#submit")->text,'Login') or exit;
+}
+
 sub test_copy_without_prepare($clone) {
     is ($clone->is_base,0) or die "Clone ".$clone->name." is supposed to be non-base";
 
