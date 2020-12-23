@@ -5,4 +5,4 @@
 
 **Bugfixes**
 
-- Failed to get write lock [\#1466]
+- LDAP session reuse with match auth [\#1465]
