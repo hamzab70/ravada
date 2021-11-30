@@ -714,6 +714,15 @@ sub _update_isos {
           ,min_disk_size => '3'
           ,arch => 'amd64'
         }
+        ,windows_11 => {
+          name => 'Windows 11'
+          ,description => 'Windows 11 64 bits. Requires an user provided ISO image.'
+          .'<a target="_blank" href="http://ravada.readthedocs.io/en/latest/docs/new_iso_image.html">[help]</a>'
+          ,xml => 'windows_11.xml'
+          ,xml_volume => 'windows11-volume.xml'
+          ,min_disk_size => '64'
+          ,arch => 'amd64'
+        }
         ,windows_12 => {
           name => 'Windows 2012'
           ,description => 'Windows 2012 64 bits. Requires an user provided ISO image.'
